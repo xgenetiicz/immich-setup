@@ -1,0 +1,7 @@
+#Not pushing data to git
+postgres/
+model-cache/
+immich-data/
+
+#especially not .env files
+.env
