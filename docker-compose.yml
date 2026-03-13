@@ -21,8 +21,6 @@ services:
       - ${UPLOAD_LOCATION}:/usr/src/app/upload # this was only /data before.
       - /media/genetiicz/storage2/extra-photos:/mnt/storage2:ro # path to additional ssd when other is full.
       - /etc/localtime:/etc/localtime:ro
-    env_file:
-      - .env
     ports:
       - '2283:2283'
     depends_on:
