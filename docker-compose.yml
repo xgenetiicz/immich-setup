@@ -71,5 +71,13 @@ services:
     healthcheck:
       disable: false
 
+  tunnel:
+    container_name: immich_tunnel
+    image: cloudflare/cloudflared:latest
+    restart: always
+    environment:
+      - TUNNEL_TOKEN=${CLOUDFLARE_TUNNEL_TOKEN}
+    command: tunnel --no-autoupdate run
+
 volumes:
   model-cache:
