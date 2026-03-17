@@ -46,6 +46,7 @@ services:
     #   service: cpu # set to one of [armnn, cuda, rocm, openvino, openvino-wsl, rknn] for accelerated inference - use the `-wsl` version for WSL2 where applicable
     volumes:
       - model-cache:/cache
+      - /media/genetiicz/storage2/extra-photos:/mnt/storage2:ro
     restart: always
     healthcheck:
       disable: false
