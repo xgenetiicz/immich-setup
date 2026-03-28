@@ -10,6 +10,17 @@
 name: immich
 
 services:
+ #1. må ha gateway caddy med en reverse proxy - og skal legge til flush -interval -1
+  gatewaycaddy:
+    image: caddy:latest
+    container_name: gatewaycaddy
+    restart: always
+    volumes:
+    - /media/genetiicz/storage2/immich-app/Caddyfile:/etc/caddy/Caddyfile
+    - /media/genetiicz/storage2/immich-app/caddy_data:/data
+    depends_on:
+      - immich-server
+
   immich-server:
     container_name: immich_server
     image: ghcr.io/immich-app/immich-server:${IMMICH_VERSION:-release}
