@@ -5,7 +5,8 @@
 #
 # https://github.com/immich-app/immich/releases/latest/download/docker-compose.yml
 #
-# The compose file on main may not be compatible with the latest release.
+# The compose file on main may not be compatible with the latest release
+
 
 name: immich
 
@@ -16,8 +17,8 @@ services:
     container_name: gatewaycaddy
     restart: always
     volumes:
-    - /media/genetiicz/storage2/immich-app/Caddyfile:/etc/caddy/Caddyfile
-    - /media/genetiicz/storage2/immich-app/caddy_data:/data
+    - ${STORAGE2_LOCATION:-/media/genetiicz/storage2/immich-app}/Caddyfile:/etc/caddy/Caddyfile #Hiding these secrets for public repo...
+    - ${STORAGE2_LOCATION:-/media/genetiicz/storage2/immich-app}/caddy_data:/data
     depends_on:
       - immich-server
 
@@ -30,7 +31,7 @@ services:
     volumes:
       # Do not edit the next line. If you want to change the media storage location on your system, edit the value of UPLOAD_LOCATION in the .env file
       - ${UPLOAD_LOCATION}:/usr/src/app/upload # this was only /data before.
-      - /media/genetiicz/storage2/extra-photos:/mnt/storage2:ro # path to additional ssd when other is full.
+      - ${STORAGE2_LOCATION}/extra-photos:/mnt/storage2:ro # path to additional ssd when other is full.
       - /etc/localtime:/etc/localtime:ro
     ports:
       - '2283:2283'
@@ -57,7 +58,7 @@ services:
     #   service: cpu # set to one of [armnn, cuda, rocm, openvino, openvino-wsl, rknn] for accelerated inference - use the `-wsl` version for WSL2 where applicable
     volumes:
       - model-cache:/cache
-      - /media/genetiicz/storage2/extra-photos:/mnt/storage2:ro
+      - ${STORAGE_LOCATION}/extra-photos:/mnt/storage2:ro
     restart: always
     healthcheck:
       disable: false
