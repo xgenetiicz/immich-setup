@@ -2,13 +2,8 @@
 
 This is the compose file behind my self-hosted Immich instance, running on a Raspberry Pi 5 (16GB) through Portainer. It's been running for a while now, so this is basically the "why did I set it up like this" doc for future me - or whoever else ends up looking at this repo.
 
-## The stack
+Check out the docker compose file at [docker-compose.yml](docker-compose.yml)
 
-- **gatewaycaddy** — Caddy reverse proxy sitting in front of everything. Needs `flush_interval -1` in the Caddyfile, otherwise uploads and thumbnails get buffered and feel laggy.
-- **immich-server** - the actual app.
-- **immich-machine-learning** - handles face detection, smart search, etc. Running CPU-only right now, no hardware acceleration configured (that's commented out in the compose file for later).
-- **database** - Postgres, but the Immich-maintained image with vectorchord and pgvector already baked in, since that's what the ML search features need.
-- **tunnel** - Cloudflare Tunnel, used only for public access.
 
 Tailscale doesn't show up in this compose file at all - it runs on the host. It's there so my phone can bypass subnet-level restrictions when I'm out and about, and still upload photos at the same speed as if it were sitting on the local network. And this also provides security also through a encrypted VNet.
 
