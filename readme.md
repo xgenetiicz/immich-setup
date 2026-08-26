@@ -1,4 +1,4 @@
-# Immich Setup — rasp5-16gbram
+# Immich Setup - Raspberry pi 5 16GB RAM 
 
 This is the compose file behind my self-hosted Immich instance, running on a Raspberry Pi 5 (16GB) through Portainer. It's been running for a while now, so this is basically the "why did I set it up like this" doc for future me - or whoever else ends up looking at this repo.
 
