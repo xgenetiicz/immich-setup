@@ -18,7 +18,7 @@ services:
     restart: always
     volumes:
     - ${CADDYFILE_PATH}:/etc/caddy/Caddyfile #Hiding these secrets for public repo...
-    - ${STORAGE2_LOCATION:-/media/genetiicz/storage2/immich-app}/caddy_data:/data
+    - ${CADDY_DATA_PATH}:/data
     depends_on:
       - immich-server
 
