@@ -17,7 +17,7 @@ services:
     container_name: gatewaycaddy
     restart: always
     volumes:
-    - ${STORAGE2_LOCATION:-/media/genetiicz/storage2/immich-app}/Caddyfile:/etc/caddy/Caddyfile #Hiding these secrets for public repo...
+    - ${CADDYFILE_PATH}:/etc/caddy/Caddyfile #Hiding these secrets for public repo...
     - ${STORAGE2_LOCATION:-/media/genetiicz/storage2/immich-app}/caddy_data:/data
     depends_on:
       - immich-server
