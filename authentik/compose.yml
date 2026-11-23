@@ -21,8 +21,6 @@ services:
     depends_on:
       postgresql:
         condition: service_healthy
-    env_file:
-    - stack.env
     environment:
       AUTHENTIK_POSTGRESQL__HOST: postgresql
       AUTHENTIK_POSTGRESQL__NAME: ${PG_DB:-authentik}
