@@ -5,3 +5,4 @@ immich-data/
 
 #especially not .env files
 .env
+authentik/.env
